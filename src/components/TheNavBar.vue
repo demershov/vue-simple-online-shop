@@ -7,9 +7,9 @@
           :key="index"
           :to="link.url"
         >
-          <v-list-action>
+          <v-list-tile-action>
             <v-icon left>{{ link.icon }}</v-icon>
-          </v-list-action>
+          </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title v-text="link.title"></v-list-tile-title>
           </v-list-tile-content>
@@ -17,7 +17,11 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar app dark color="primary">
-      <v-toolbar-side-icon @click="sideNav = !sideNav"></v-toolbar-side-icon>
+      <v-toolbar-side-icon 
+        @click="sideNav = !sideNav"
+        class="hidden-md-and-up"
+      >
+      </v-toolbar-side-icon>
       <v-toolbar-title>Онлайн магазин</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
