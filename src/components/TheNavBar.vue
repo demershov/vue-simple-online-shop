@@ -67,7 +67,7 @@ export default {
           url: '/register'
         },
         {
-          title: 'Корзина',
+          title: 'Заказы',
           icon: 'shopping_cart',
           url: '/checkout'
         },

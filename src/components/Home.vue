@@ -32,9 +32,9 @@
             aria-label="product.title"
             :to="'/product/' + product.id"
           >
-            <v-card-media height="350px"
+            <v-img height="350px"
               :src="product.imageSrc">
-            </v-card-media>
+            </v-img>
           </router-link>
 
           <v-card-title primary-title>
