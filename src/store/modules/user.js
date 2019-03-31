@@ -30,7 +30,7 @@ export default {
         throw error
       }
     },
-    
+
     async loginUser({commit}, {email, password}) {
       commit('clearError')
       commit('setLoading', true)
@@ -44,11 +44,21 @@ export default {
         commit('setError', error.message)
         throw error
       }
+    },
+    autoLoginUser({commit}, payload) {
+      commit('setUser', new User(payload.uid))
+    },
+    logoutUser({commit}) {
+      firebase.auth().signOut()
+      commit('setUser', null)
     }
   },
   getters: {
     user(state) {
       return state.user
+    },
+    isUserLoggedIn(state) {
+      return state.user !== null
     }
   }
 }
