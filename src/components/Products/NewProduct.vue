@@ -78,7 +78,8 @@
           <v-flex xs12>
             <v-spacer></v-spacer>
             <v-btn
-              :disabled="!valid"
+              :loading="loading"
+              :disabled="!valid || loading"
               class="success"
               @click="createProduct"
             >Сохранить</v-btn>
@@ -103,6 +104,11 @@ export default {
       valid: false
     }
   },
+  computed: {
+    loading() {
+      return this.$store.getters.loading
+    }
+  },
   methods: {
     createProduct() {
       if (this.$refs.form.validate()) {
@@ -115,8 +121,11 @@ export default {
           description: this.description,
           promo: this.promo
         }
-        console.log(product)
-        
+        this.$store.dispatch('createProduct', product)
+          .then(() => {
+            this.$router.push('/list')
+          })
+          .catch(() => {})
       }
     }
   },

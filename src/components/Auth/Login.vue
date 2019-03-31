@@ -64,6 +64,11 @@ export default {
       ]
     }
   },
+  computed: {
+    loading() {
+      return this.$store.getters.loading
+    }
+  },
   methods: {
     onSubmit() {
       if (this.$refs.form.validate()) {
@@ -77,11 +82,11 @@ export default {
           })
           .catch(() => {})
       }
-    }
+    },
   },
-  computed: {
-    loading() {
-      return this.$store.getters.loading
+  created() {
+    if (this.$route.query['logginError']) {
+      this.$store.dispatch('setError', 'Пожалуйста авторизуйтесь!')
     }
   }
 }
