@@ -3,26 +3,26 @@
     <section class="product mt-3 elevation-10">
       <v-layout row wrap>
         <v-flex xs12 lg6>
-          <img src='https://image.ibb.co/fZzq1o/Lenovo_Legion_Y520.jpg' alt="" class="product-img">
+          <img :src='product.imageSrc' alt="" class="product-img">
         </v-flex>
         <v-flex xs12 lg6>
           <div class="product-info">
             <h5 class="product-title display-1 mb-3 mt-3">
-              Lorem ipsum dolor sit amet.
+              {{product.title}}
             </h5>
             <p class="product-category title">
               <span class="product-title">
                 Производитель:
-              </span>Lorem
+              </span>{{ product.vendor.charAt(0).toUpperCase() + product.vendor.substr(1) }}
             </p>
             <p class="product-price title">
-              <span class="product-title">Цена: </span>100$
+              <span class="product-title">Цена: </span>${{ product.price }}
             </p>
             <p class="product-color title">
               <span class="product-title">Цвет:</span>
               <span 
-                :title="purple"
-                :style="{backgroundColor: 'purple'}"
+                :title="product.color"
+                :style="{backgroundColor: product.color}"
                 class="product-color-bg"
               >
               </span>
@@ -30,10 +30,10 @@
             <p class="title">
               <span class="product-title">
                 Материал:
-              </span>Lorem
+              </span> {{ product.material.charAt(0).toUpperCase() + product.material.substr(1) }}
             </p>
             <div class="title mb-5">
-              <p class="product-title mb-2">Описание:</p> Lorem
+              <p class="product-title mb-2">Описание:</p> {{ product.description }}
             </div>
             <v-btn color="primary" class="headline">Редактировать</v-btn>
             <v-btn color="primary" class="headline">Купить</v-btn>
@@ -46,11 +46,15 @@
 
 <script>
 export default {
-  data() {
-    return {
-      
-    }
+  props: {
+    id: String,
   },
+  computed: {
+    product() {
+      const id = this.id
+      return this.$store.getters.productById(id)
+    }
+  }
 }
 </script>
 

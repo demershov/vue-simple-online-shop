@@ -10,11 +10,11 @@
             <v-form ref="form" v-model="valid" lazy-validation>
               <v-text-field 
                 prepend-icon="person" 
-                name="login" 
-                label="Логин" 
+                name="email" 
+                label="Почта" 
                 type="text"
-                v-model="login"
-                :rules="loginRules"
+                v-model="email"
+                :rules="emailRules"
               >
               </v-text-field>
               <v-text-field 
@@ -61,13 +61,13 @@
 export default {
   data() {
     return {
-      login: '',
+      email: '',
       password: '',
       confirmPassword: '',
       valid: false,
-      loginRules: [
+      emailRules: [
         v => !!v || 'Логин обязателен.',
-        v => (v && v.length <= 6) || 'Длина логина должна быть меньше 6 символам.'
+        v => /.+@.+/.test(v) || 'Попробуйте другую почту'
       ],
       passwordRules: [
         v => !!v || 'Пароль обязателен.',
@@ -83,7 +83,7 @@ export default {
     onSubmit() {
       if (this.$refs.form.validate()) {
         const user = {
-          login: this.login,
+          email: this.email,
           password: this.password
         }
         console.log(user)
