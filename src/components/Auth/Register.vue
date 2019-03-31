@@ -46,7 +46,8 @@
             <v-btn 
               color="primary"
               @click="onSubmit"
-              :disabled="!valid"
+              :disabled="!valid || loading"
+              :loading="loading"
             >
             Создать
             </v-btn>
@@ -86,10 +87,18 @@ export default {
           email: this.email,
           password: this.password
         }
-        console.log(user)
-        
+        this.$store.dispatch('registerUser', user)
+          .then(() => {
+            this.$router.push('/')
+          })
+          .catch(err => console.log(err))
       }
     }
   },
+  computed: {
+    loading() {
+      return this.$store.getters.loading
+    }
+  }
 }
 </script>
