@@ -98,6 +98,7 @@ export default {
     async createProduct({commit, getters}, payload) {
       commit('clearError')
       commit('setLoading', true)
+      const image = payload.image
       try {
         const newProduct = new Product(
           payload.title,
@@ -107,15 +108,19 @@ export default {
           payload.price,
           payload.description,
           getters.user.id,
-          payload.imageSrc,
+          '',
           payload.promo,
         )
         const product = await firebase.database().ref('products').push(newProduct)
-
+        const imageExt = image.name.slice(image.name.lastIndexOf('.'))
+        const fileData = await firebase.storage().ref(`products/${product.key}.${imageExt}`).put(image)
+        const imageSrc = await firebase.storage().ref().child(fileData.ref.fullPath).getDownloadURL()
+        await firebase.database().ref('products').child(product.key).update({imageSrc})
         commit('setLoading', false)
         commit('createProduct', {
           ...newProduct,
-          id: product.key
+          id: product.key,
+          imageSrc: imageSrc
         })
       } catch (error) {
         commit('setError', error.message)
