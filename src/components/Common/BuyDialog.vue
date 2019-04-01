@@ -17,13 +17,13 @@
               <v-card-text>
                  <v-text-field
                     name="name" 
-                    label="Имя" 
+                    label="Ваше имя" 
                     type="text"
                     v-model="name"
                   ></v-text-field>
                  <v-text-field
                     name="phone" 
-                    label="Телефон" 
+                    label="Ваш телефон" 
                     type="tel"
                     v-model="phone"
                   ></v-text-field>
@@ -36,16 +36,14 @@
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn
-                  dark 
-                  color="light-blue darken-4" 
+                  flat
                   outline 
                   @click="onCancel" 
                   :disabled="localLoading"
                 >Закрыть</v-btn>
                 <v-btn 
-                  dark 
-                  color="light-blue darken-4" 
-                  outline 
+                  flat
+                  class="success"
                   @click="onSave"
                   :disabled="localLoading"
                   :loading="localLoading"

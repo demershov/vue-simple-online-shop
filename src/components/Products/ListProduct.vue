@@ -8,7 +8,7 @@
           v-for="(product, index) in myProducts" 
           :key="index"
         >
-          <v-layout>
+          <v-layout row>
             <v-flex xs4>
               <v-img
                 :src="product.imageSrc"
@@ -35,7 +35,7 @@
     </v-layout>
     <v-layout v-else-if="!loading && myProducts.length === 0">
         <v-flex xs12 class="text-xs-center">
-          <h1 class="text-primary">У вас нет товаров</h1>
+          <h1 class="text--primary">У вас нет товаров</h1>
         </v-flex>
     </v-layout>
     <v-layout v-else>

@@ -114,4 +114,45 @@ export default {
   border: 1px solid #2b2b2b;
   border-radius: 10px;
 }
+@media screen and (max-wdith: 1270px) {
+  .product {
+    text-align: center;
+  }
+
+  .product-info {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-wdith: 620px) { 
+  .product {
+    text-align: left;
+  }
+
+  .product-img {
+    width: 100%;
+    height: 100%;
+  }
+  .product-title  {
+    text-align: center;
+  }
+
+}
+
+@media screen and (max-wdith: 400px) { 
+  .product {
+    text-align: start;
+    margin-bottom: 120px;
+    padding: 10px;
+  }
+  
+  .product-img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .product-info {
+    margin-left: 0;
+  }
+}
 </style>
