@@ -4,9 +4,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import firebase from 'firebase/app'
+import BuyDialog from './components/Common/BuyDialog'
 
 Vue.config.productionTip = false
-
+Vue.component('app-buy-dialog', BuyDialog)
 new Vue({
   render: h => h(App),
   router,

@@ -35,8 +35,9 @@
             <div class="title mb-5">
               <p class="product-title mb-2">Описание:</p> {{ product.description }}
             </div>
+            <v-spacer></v-spacer>
             <edit-product :product=product v-if="isOwner"></edit-product>
-            <v-btn color="primary" class="headline">Купить</v-btn>
+            <app-buy-dialog :product="product"></app-buy-dialog>
           </div>
         </v-flex>
       </v-layout>
