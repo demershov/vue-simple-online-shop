@@ -43,14 +43,14 @@
             :rules="[v => !!v ||  'Цена обязательна!']"
           >
           </v-text-field>
-          <v-text-field
+          <v-textarea
             name="description" 
             label="Описание" 
             type="text"
             multi-line
             v-model="description"
           >
-          </v-text-field>
+          </v-textarea>
         </v-form>
         <v-layout class="mb-3">
           <v-flex xs12>
