@@ -1,4 +1,6 @@
 # vue-simple-site
+:tw-270c:  Hello. This is a small example of an online store built using *Vue, Firebase, Vuex, Router* and *Vuetify*.
+You can see a **demo** here - - **https://quizzical-lichterman-bb1bbb.netlify.com/**
 
 ## Project setup
 ```
