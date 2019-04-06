@@ -24,7 +24,6 @@
                 id="password" 
                 type="password"
                 v-model="password"
-                :counter="8"
                 :rules="passwordRules"
               >
               </v-text-field>
@@ -35,7 +34,6 @@
                 id="password" 
                 type="password"
                 v-model="confirmPassword"
-                :counter="8"
                 :rules="confirmPasswordRules"
               >
               </v-text-field>
@@ -72,7 +70,7 @@ export default {
       ],
       passwordRules: [
         v => !!v || 'Пароль обязателен.',
-        v => (v && v.length <= 8) || 'Длина пароля должна быть равной или меньше 8 символам.'
+        v => (v && v.length >= 8) || 'Длина пароля должна быть больше или равной 8 символам.'
       ],
       confirmPasswordRules: [
         v => !!v || 'Подтверждение пароля обязателено.',

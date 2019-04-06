@@ -40,10 +40,10 @@ export default {
       try {
         const fbVal = await firebase.database().ref(`/users/${getters.user.id}/orders`).once('value')
         const orders = fbVal.val()
-        Object.keys(orders).forEach(key => {
+        for (const key in orders) {
           const order = orders[key]
-            resultOrders.push(new Order(order.name, order.phone, order.productId, order.done, key))
-        })
+          resultOrders.push(new Order(order.name, order.phone, order.productId, order.done, key))
+        }
         commit('loadOrders', resultOrders)
         commit('setLoading', false)
       } catch (error) {

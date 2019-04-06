@@ -12,6 +12,7 @@ import AuthGuard from './auth-guard'
 Vue.use(Router)
 
 export default new Router({
+  base: '',
   routes: [
     {
       path: '/',

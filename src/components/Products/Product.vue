@@ -64,14 +64,17 @@ export default {
   },
   computed: {
     product() {
-      const id = this.id
-      return this.$store.getters.productById(id)
+      return this.$store.getters.productById(this.id)
     },
     loading() {
       return this.$store.getters.loading
     },
     isOwner() {
-      return this.product.ownerId === this.$store.getters.user.id
+      if (this.$store.getters.isUserLoggedIn) {
+        return this.product.ownerId === this.$store.getters.user.id
+      } else {
+        return false
+      }
     }
   }
 }

@@ -49,7 +49,7 @@ export default {
           payload.price,
           payload.description,
           getters.user.id,
-          '',
+          payload.image,
           payload.promo,
         )
         const product = await firebase.database().ref('products').push(newProduct)
@@ -76,8 +76,7 @@ export default {
       try {
         const productsVal = await firebase.database().ref('products').once('value')
         const products = productsVal.val()
-
-        Object.keys(products).forEach(key => {
+        for (const key in products) {
           const product = products[key]
           resultProducts.push(
             new Product(
@@ -93,9 +92,10 @@ export default {
               key
             )
           )
-          commit('loadProducts', resultProducts)
-          commit('setLoading', false)
-        });
+         
+        }
+        commit('loadProducts', resultProducts)
+        commit('setLoading', false)
 
       } catch (error) {
         commit('setError', error.message)
